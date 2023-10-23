@@ -45,3 +45,32 @@ function createList() {
 
   addEventListener();
 }
+
+function dragStart() {
+  // console.log('Event: ', 'dragstart');
+  dragStartIndex = +this.closest("li").getAttribute("data-index");
+  console.log(dragStartIndex);
+}
+
+function dragEnter() {
+  // console.log('Event: ', 'dragenter');
+  this.classList.add("over");
+}
+
+function dragLeave() {
+  // console.log('Event: ', 'dragleave');
+  this.classList.remove("over");
+}
+function dragOver(e) {
+  // console.log('Event: ', 'dragover');
+  e.preventDefault();
+}
+
+function dragDrop() {
+  // console.log('Event: ', 'drop');
+  const dragEndIndex = +this.getAttribute("data-index");
+
+  swapItems(dragStartIndex, dragEndIndex);
+
+  this.classList.remove("over");
+}
